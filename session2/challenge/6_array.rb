@@ -17,11 +17,16 @@
 
 require 'prime'
 
+class Interger
+  def prime?
+    Prime.prime?(num)
+  end
+end
+
 def prime_chars?(arr)
   con_arr = arr.join("")
-  num = con_arr.length
-  if Prime.prime?(num)
-    returns true
-  elsif
-    returns false
+  num = con_arr.length.prime?
+  num
 end
+
+prime_chars?(['a', 'b', 'cd'])
