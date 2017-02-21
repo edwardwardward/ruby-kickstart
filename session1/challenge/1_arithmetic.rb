@@ -9,7 +9,7 @@
 # arithmeitc1(-6)     # => -50
 
 def arithmetic1(n)
-	(n - 20) * 5
+	n * 5 - 20
 end
 
-puts arithmetic1(21)
+puts arithmetic1(10)

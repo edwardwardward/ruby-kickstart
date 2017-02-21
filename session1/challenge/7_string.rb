@@ -6,7 +6,7 @@
 
 def pirates_say_arrrrrrrrr(string)
   p = ((0..string.length).find_all { |i| string.downcase[i] == "r" }).map { |i| i + 1 }
-  print string.chars.to_a.select.each_with_index { |_,i| p.include? i }.join
+  string.chars.to_a.select.each_with_index { |_,i| p.include? i }.join
 
 end
 

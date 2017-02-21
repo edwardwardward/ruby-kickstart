@@ -11,15 +11,13 @@
 
 def grade(num_books, reads_books)
   case
-  when num_books.between?(0,10) && reads_books == false then puts "D"
-  when num_books.between?(0,10) && reads_books == true then puts "C"
-  when num_books.between?(10,20) && reads_books == false then puts "C"
-  when num_books.between?(10,20) && reads_books == true then puts "B"
-  when num_books.between?(20,30) && reads_books == false then puts "B"
-  when num_books.between?(20,30) && reads_books == true then puts "A"
-  when num_books > 29 && reads_books == false then puts "A"
-  when num_books > 29 && reads_books == true then puts "A"
+  when num_books < 10 && reads_books == false then "D"
+  when num_books < 10 && reads_books == true then  "C"
+  when num_books.between?(10,20) && reads_books == false then  "C"
+  when num_books.between?(10,20) && reads_books == true then  "B"
+  when num_books.between?(20,30) && reads_books == false then  "B"
+  when num_books.between?(20,30) && reads_books == true then  "A"
+  when num_books > 29 && reads_books == false then  "B"
+  when num_books > 29 && reads_books == true then  "A"
   end
 end
-
-grade(40, true)
