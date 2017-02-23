@@ -6,3 +6,11 @@
 #
 # Example:
 # word_count "The dog and the cat" # => {"the" => 2, "dog" => 1, "and" => 1, "cat" => 1}
+
+def word_count(string)
+  dc = string.downcase.split(" ")
+  has = Hash[dc.group_by {|x| x}.map {|k,v| [k,v.count]}]
+  
+end
+
+word_count("The dog and the cat")

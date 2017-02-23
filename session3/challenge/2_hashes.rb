@@ -8,3 +8,15 @@
 # staircase 4  # => {1 => [], 3 => [2]}
 # staircase 5  # => {1 => [], 3 => [2], 5 =>[2, 4]}
 
+def staircase(n)
+  ha = {}
+  n =* 1..n
+  n.each do |p|
+    keys =* 1..p
+    keys.delete_if &:odd?
+    ha.store(p,keys) if p.odd?
+  end
+  ha
+end
+
+staircase(10)

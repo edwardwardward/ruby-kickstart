@@ -17,3 +17,34 @@
 # match_maker true,  true,  true, true, nil     # => [false, true]
 # match_maker true,  true,  true, 0, nil        # => [false, true]
 
+def match_maker(*elms)
+  result = []
+  y = *elms.to_a
+  if y[0] == true
+    y.shift
+    l = y.each_slice(2).to_a
+    l.each do |a,b|
+      if !!a == !!b
+        result << false
+      else
+        result << true
+      end
+    end
+
+  else y[0] == false
+    y.shift
+    l = y.each_slice(2).to_a
+    print l
+    l.each do |a,b|
+      if !!a == !!b
+        result << true
+      else
+        result << false
+      end
+    end
+  end
+  result
+end
+
+
+match_maker true, true, true, false, nil
