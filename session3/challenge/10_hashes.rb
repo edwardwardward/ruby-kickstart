@@ -29,5 +29,18 @@
 # create it from scratch :)
 
 
-def pathify
+def pathify(a=Hash.new)
+  return a.map { |path| '/' + path } if a.is_a? Array
+
+  to_return = []
+  a.each do |upper_path,lower_dir|
+    upper_path = '/' + upper_path
+    lower_paths = pathify(lower_dir)
+    lower_paths.each do |lower_path|
+      to_return << (upper_path + lower_path)
+    end
+  end
+  to_return
 end
+
+pathify('usr' => {'bin' => ['ruby'] })

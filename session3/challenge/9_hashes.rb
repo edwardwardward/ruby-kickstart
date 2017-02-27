@@ -19,7 +19,7 @@
 #   you can get an array of keys from a hash with the keys method
 #
 # examples:
-#
+#r
 # shared [1,2,3], [1,2,4]            # => [{1=>[true, true], 2=>[true, true], 3=>[true, nil], 4=>[nil, true]}, [1, 2]]
 # shared %w(a b c d), %w(aa b cc d)  # => [{"a"=>[true, nil], "b"=>[true, true], "c"=>[true, nil], "d"=>[true, true], "aa"=>[nil, true], "cc"=>[nil, true]}, ["b", "d"]]
 # shared [], [1,2]                   # => [{1=>[nil, true], 2=>[nil, true]}, []]
@@ -29,4 +29,27 @@
 # shared [1,2,3], [3,2,1]            # => [{1=>[true, true], 2=>[true, true], 3=>[true, true]}, [1, 2, 3]]
 
 def shared(a, b)
+  union = Hash.new do |hash, key|
+  hash[key] = [(a.include?(key)||nil), # include returns true or false, when false, it goes to the RHS of the ||, and becomes ni
+                    (b.include?(key)||nil)]
+  end
+
+    union = {}
+    a.each do |element|
+
+      union[element] ||= [nil, nil]
+      union[element][0] = true
+    end
+
+    b.each do |element|
+      union[element] ||= [nil, nil]
+      union[element][1] = true
+    end
+
+    result = union.select { |key, value| value == [true, true] }.map { |key, value| key }
+
+    return union, result.sort
+
 end
+
+print shared [1,2,3], [1,2,4]
